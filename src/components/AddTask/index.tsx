@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { uuid } from "uuidv4";
 
 import tasks from "../../reducers/tasks";
 
@@ -14,6 +15,7 @@ const AddTask = () => {
     e.preventDefault();
     console.log(value);
     const newTask = {
+      id: uuid(),
       description: value,
       isComplete: false,
     };

@@ -1,19 +1,23 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import tasks from "../../reducers/tasks";
 
 const TasksList = () => {
   const items = useSelector((store: any) => store.tasks.items);
 
-  console.log(tasks);
+  const dispatch = useDispatch();
 
   return (
     <div>
       {items.map((task: any) => (
         <div key={task.id} className="task-item">
           <p>{task.description}</p>
-          <input type="checkbox" checked={task.isComplete} />
+          <input
+            type="checkbox"
+            checked={task.isComplete}
+            onChange={() => dispatch(tasks.actions.toggleComplete(task.id))}
+          />
         </div>
       ))}
     </div>
