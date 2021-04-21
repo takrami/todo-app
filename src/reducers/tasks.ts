@@ -23,6 +23,13 @@ const tasks = createSlice({
       console.log(action);
       store.items = [...store.items, action.payload];
     },
+    removeTask: (store, action) => {
+      const updatedItems = store.items.filter(
+        (task: any) => task.id !== action.payload
+      );
+
+      store.items = updatedItems;
+    },
   },
 });
 

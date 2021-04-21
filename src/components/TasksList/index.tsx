@@ -18,6 +18,9 @@ const TasksList = () => {
             checked={task.isComplete}
             onChange={() => dispatch(tasks.actions.toggleComplete(task.id))}
           />
+          <button onClick={() => dispatch(tasks.actions.removeTask(task.id))}>
+            remove
+          </button>
         </div>
       ))}
     </div>
