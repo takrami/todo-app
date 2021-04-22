@@ -30,6 +30,9 @@ const tasks = createSlice({
 
       store.items = updatedItems;
     },
+    removeAllTask: (store) => {
+      store.items = [];
+    },
   },
 });
 
