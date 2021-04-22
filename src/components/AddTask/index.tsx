@@ -13,11 +13,10 @@ const AddTask = () => {
 
   const onFormSubmit = (e: any) => {
     e.preventDefault();
-    console.log(value);
     const newTask = {
       id: uuid(),
       description: value,
-      isComplete: false,
+      isCompleted: false,
     };
 
     dispatch(tasks.actions.addTask(newTask));

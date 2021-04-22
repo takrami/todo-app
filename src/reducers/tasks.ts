@@ -11,7 +11,7 @@ const tasks = createSlice({
         if (task.id === action.payload) {
           return {
             ...task,
-            isComplete: !task.isComplete,
+            isCompleted: !task.isCompleted,
           };
         } else {
           return task;
@@ -20,7 +20,7 @@ const tasks = createSlice({
       store.items = updatedItems;
     },
     addTask: (store, action) => {
-      console.log(action);
+      // console.log(action);
       store.items = [...store.items, action.payload];
     },
     removeTask: (store, action) => {

@@ -15,7 +15,7 @@ const TasksList = () => {
           <p>{task.description}</p>
           <input
             type="checkbox"
-            checked={task.isComplete}
+            checked={task.isCompleted}
             onChange={() => dispatch(tasks.actions.toggleComplete(task.id))}
           />
           <button onClick={() => dispatch(tasks.actions.removeTask(task.id))}>
