@@ -1,28 +1,25 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+import { Task } from "../../types";
 import tasks from "../../reducers/tasks";
 
 import { HeaderContainer } from "./style";
 
-const Header = () => {
+const Header: React.FunctionComponent = () => {
   const items = useSelector((store: any) => store.items);
   const dispatch = useDispatch();
 
-  const numberOfTasks = items.length;
+  const numberOfTasks: number = items.length;
 
-  const getNumberOfCompletedTasks = (items: any) => {
-    if (items.length > 0) {
-      const completedTasks = items.filter((task: any) => task.isCompleted);
-      return completedTasks.length;
-    }
+  const getNumberOfCompletedTasks = (items: Task[]): number => {
+    const completedTasks = items.filter((task: Task) => task.isCompleted);
+    return completedTasks.length;
   };
 
-  const getNumberOfUnCompletedTasks = (items: any) => {
-    if (items.length > 0) {
-      const unCompletedTasks = items.filter((task: any) => !task.isCompleted);
-      return unCompletedTasks.length;
-    }
+  const getNumberOfUnCompletedTasks = (items: Task[]): number => {
+    const unCompletedTasks = items.filter((task: Task) => !task.isCompleted);
+    return unCompletedTasks.length;
   };
 
   return (

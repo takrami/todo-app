@@ -2,19 +2,20 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 
+import { Task } from "../../types";
 import tasks from "../../reducers/tasks";
 
 import { NewTask } from "./style";
 
-const AddTask = () => {
-  const [value, setValue] = useState("");
+const AddTask: React.FunctionComponent = () => {
+  const [value, setValue] = useState<string>("");
 
   const dispatch = useDispatch();
 
-  const onFormSubmit = (e: any) => {
+  const onFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const newTask = {
+    const newTask: Task = {
       id: uuidv4(),
       description: value,
       isCompleted: false,
@@ -32,7 +33,9 @@ const AddTask = () => {
         <input
           type="text"
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setValue(e.target.value)
+          }
         />
         <button type="submit">Add todo</button>
       </form>

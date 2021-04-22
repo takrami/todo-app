@@ -7,7 +7,7 @@ import TasksList from "../TasksList";
 
 import { MainContainer } from "./style";
 
-const Main = () => {
+const Main: React.FunctionComponent = () => {
   return (
     <MainContainer>
       <Header />

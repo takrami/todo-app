@@ -1,10 +1,6 @@
 import React from "react";
 import { Provider } from "react-redux";
-import {
-  configureStore,
-  getDefaultMiddleware,
-  combineReducers,
-} from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { Switch, Route } from "react-router-dom";
 import {
   persistStore,
