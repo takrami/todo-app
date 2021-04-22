@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 
 import { Task } from "../../types";
-import tasks from "../../reducers/tasks";
+import tasks from "../../redux/tasksSlice";
 
 import { NewTask } from "./style";
 

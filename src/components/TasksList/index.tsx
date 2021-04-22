@@ -2,11 +2,11 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
 
-import tasks from "../../reducers/tasks";
-import { Task } from "../../types";
+import tasks from "../../redux/tasksSlice";
+import { Task, TaskStore } from "../../types";
 
 const TasksList: React.FunctionComponent = () => {
-  const items: Task[] = useSelector((store: any) => store.items);
+  const items: Task[] = useSelector((store: TaskStore) => store.tasks);
 
   const dispatch = useDispatch();
 

@@ -1,13 +1,13 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { Task } from "../../types";
-import tasks from "../../reducers/tasks";
+import { Task, TaskStore } from "../../types";
+import tasks from "../../redux/tasksSlice";
 
 import { HeaderContainer } from "./style";
 
 const Header: React.FunctionComponent = () => {
-  const items = useSelector((store: any) => store.items);
+  const items = useSelector((store: TaskStore) => store.tasks);
   const dispatch = useDispatch();
 
   const numberOfTasks: number = items.length;

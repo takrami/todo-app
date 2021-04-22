@@ -1,13 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const tasks: any = createSlice({
+import { Task } from "../types";
+
+const initialState = {
+  tasks: [] as Task[],
+};
+
+const tasksSlice = createSlice({
   name: "tasks",
-  initialState: {
-    items: [] as any,
-  },
+  initialState,
   reducers: {
     toggleComplete: (store, action) => {
-      const updatedItems = store.items.map((task: any) => {
+      const updatedItems: Task[] = store.tasks.map((task: Task) => {
         if (task.id === action.payload) {
           return {
             ...task,
@@ -17,25 +21,25 @@ const tasks: any = createSlice({
           return task;
         }
       });
-      store.items = updatedItems;
+      store.tasks = updatedItems;
     },
 
     addTask: (store, action) => {
-      store.items = [...store.items, action.payload];
+      store.tasks = [...store.tasks, action.payload];
     },
 
     removeTask: (store, action) => {
-      const updatedItems = store.items.filter(
-        (task: any) => task.id !== action.payload
+      const updatedItems = store.tasks.filter(
+        (task: Task) => task.id !== action.payload
       );
 
-      store.items = updatedItems;
+      store.tasks = updatedItems;
     },
 
     removeAllTask: (store) => {
-      store.items = [];
+      store.tasks = [];
     },
   },
 });
 
-export default tasks;
+export default tasksSlice;

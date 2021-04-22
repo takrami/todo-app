@@ -5,4 +5,8 @@ interface Task {
   createdAt: number;
 }
 
-export type { Task };
+interface TaskStore {
+  tasks: Task[];
+}
+
+export type { Task, TaskStore };
