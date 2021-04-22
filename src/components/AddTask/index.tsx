@@ -15,9 +15,15 @@ const AddTask: React.FunctionComponent = () => {
   const onFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    const normalizedValue = value.trim();
+
+    if (!normalizedValue) {
+      return;
+    }
+
     const newTask: Task = {
       id: uuidv4(),
-      description: value,
+      description: normalizedValue,
       isCompleted: false,
       createdAt: Date.now(),
     };
