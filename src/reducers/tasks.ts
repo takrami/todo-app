@@ -19,10 +19,12 @@ const tasks = createSlice({
       });
       store.items = updatedItems;
     },
+
     addTask: (store, action) => {
       // console.log(action);
       store.items = [...store.items, action.payload];
     },
+
     removeTask: (store, action) => {
       const updatedItems = store.items.filter(
         (task: any) => task.id !== action.payload
@@ -30,8 +32,18 @@ const tasks = createSlice({
 
       store.items = updatedItems;
     },
+
     removeAllTask: (store) => {
       store.items = [];
+    },
+
+    getCompletedTasks: (store) => {
+      console.log(store);
+      // const completedTasks = store.items.filter(
+      //   (task: any) => task.isCompleted
+      // );
+      // return completedTasks;
+      return store.items;
     },
   },
 });

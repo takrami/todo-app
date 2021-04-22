@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import AddTask from "../AddTask";
 import Header from "../Header";
@@ -12,6 +13,7 @@ const Main = () => {
       <Header />
       <AddTask />
       <TasksList />
+      <Link to="/completed-tasks">Done</Link>
     </MainContainer>
   );
 };
