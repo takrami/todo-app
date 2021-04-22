@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const tasks = createSlice({
+const tasks: any = createSlice({
   name: "tasks",
   initialState: {
     items: [] as any,
@@ -21,7 +21,6 @@ const tasks = createSlice({
     },
 
     addTask: (store, action) => {
-      // console.log(action);
       store.items = [...store.items, action.payload];
     },
 
@@ -35,15 +34,6 @@ const tasks = createSlice({
 
     removeAllTask: (store) => {
       store.items = [];
-    },
-
-    getCompletedTasks: (store) => {
-      console.log(store);
-      // const completedTasks = store.items.filter(
-      //   (task: any) => task.isCompleted
-      // );
-      // return completedTasks;
-      return store.items;
     },
   },
 });

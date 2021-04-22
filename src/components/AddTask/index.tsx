@@ -13,6 +13,7 @@ const AddTask = () => {
 
   const onFormSubmit = (e: any) => {
     e.preventDefault();
+
     const newTask = {
       id: uuidv4(),
       description: value,

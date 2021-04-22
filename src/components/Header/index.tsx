@@ -6,18 +6,23 @@ import tasks from "../../reducers/tasks";
 import { HeaderContainer } from "./style";
 
 const Header = () => {
-  const items = useSelector((store: any) => store.tasks.items);
+  const items = useSelector((store: any) => store.items);
   const dispatch = useDispatch();
+
   const numberOfTasks = items.length;
 
   const getNumberOfCompletedTasks = (items: any) => {
-    const completedTasks = items.filter((task: any) => task.isCompleted);
-    return completedTasks.length;
+    if (items.length > 0) {
+      const completedTasks = items.filter((task: any) => task.isCompleted);
+      return completedTasks.length;
+    }
   };
 
   const getNumberOfUnCompletedTasks = (items: any) => {
-    const unCompletedTasks = items.filter((task: any) => !task.isCompleted);
-    return unCompletedTasks.length;
+    if (items.length > 0) {
+      const unCompletedTasks = items.filter((task: any) => !task.isCompleted);
+      return unCompletedTasks.length;
+    }
   };
 
   return (
