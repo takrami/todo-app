@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { uuid } from "uuidv4";
+import { v4 as uuidv4 } from "uuid";
 
 import tasks from "../../reducers/tasks";
 
@@ -14,9 +14,10 @@ const AddTask = () => {
   const onFormSubmit = (e: any) => {
     e.preventDefault();
     const newTask = {
-      id: uuid(),
+      id: uuidv4(),
       description: value,
       isCompleted: false,
+      createdAt: Date.now(),
     };
 
     dispatch(tasks.actions.addTask(newTask));
