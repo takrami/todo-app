@@ -1,7 +1,19 @@
 import styled from "styled-components";
 
-const NewTask = styled.div`
-  border: 1px solid rebeccapurple;
+const AddTaskForm = styled.form`
+  display: grid;
+  grid-template-columns: 1fr auto;
 `;
 
-export { NewTask };
+const AddTaskInput = styled.input`
+  border: 1px solid #d7e0e8;
+  /* border-radius: 5px; */
+  padding: 8px;
+`;
+
+const AddTaskButton = styled.button`
+  color: #5775a0;
+  font-size: 1em;
+`;
+
+export { AddTaskForm, AddTaskInput, AddTaskButton };

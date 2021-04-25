@@ -1,9 +1,18 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
+import { GoX } from "react-icons/go";
 
 import tasks from "../../redux/tasksSlice";
 import { Task, TaskStore } from "../../types";
+import {
+  TaskList,
+  TaskItem,
+  TextContainer,
+  Text,
+  RemoveButton,
+  Time,
+} from "./style";
 
 const TasksList: React.FunctionComponent = () => {
   const items: Task[] = useSelector((store: TaskStore) => store.tasks);
@@ -15,23 +24,27 @@ const TasksList: React.FunctionComponent = () => {
   }
 
   return (
-    <div>
+    <TaskList>
       {items.map((task: Task) => (
-        <div key={task.id} className="task-item">
-          <p>{task.description}</p>
-          <input
-            type="checkbox"
-            checked={task.isCompleted}
-            onChange={() => dispatch(tasks.actions.toggleComplete(task.id))}
-          />
+        <TaskItem key={task.id} className="task-item">
+          <TextContainer>
+            <input
+              type="checkbox"
+              checked={task.isCompleted}
+              onChange={() => dispatch(tasks.actions.toggleComplete(task.id))}
+            />
+            <Text>{task.description}</Text>
 
-          {moment(task.createdAt).fromNow()}
-          <button onClick={() => dispatch(tasks.actions.removeTask(task.id))}>
-            remove
-          </button>
-        </div>
+            <RemoveButton
+              onClick={() => dispatch(tasks.actions.removeTask(task.id))}
+            >
+              <GoX />
+            </RemoveButton>
+          </TextContainer>
+          <Time>{moment(task.createdAt).fromNow()}</Time>
+        </TaskItem>
       ))}
-    </div>
+    </TaskList>
   );
 };
 

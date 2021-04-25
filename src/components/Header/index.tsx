@@ -1,10 +1,18 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+import { GoTrashcan } from "react-icons/go";
+
 import { Task, TaskStore } from "../../types";
 import tasks from "../../redux/tasksSlice";
 
-import { HeaderContainer } from "./style";
+import {
+  HeaderContainer,
+  HeaderItems,
+  RemoveButton,
+  NavContainer,
+  NavLink,
+} from "./style";
 
 const Header: React.FunctionComponent = () => {
   const items = useSelector((store: TaskStore) => store.tasks);
@@ -23,13 +31,22 @@ const Header: React.FunctionComponent = () => {
   };
 
   return (
-    <HeaderContainer>
-      All task {numberOfTasks} Completed {getNumberOfCompletedTasks(items)}
-      unCompleted {getNumberOfUnCompletedTasks(items)}
-      <button onClick={() => dispatch(tasks.actions.removeAllTask())}>
-        remove all
-      </button>
-    </HeaderContainer>
+    <>
+      <NavContainer>
+        <NavLink to="/">Todo</NavLink>
+        <NavLink to="/completed-tasks">Done</NavLink>
+      </NavContainer>
+      <HeaderContainer>
+        <HeaderItems>All task {numberOfTasks}</HeaderItems>
+        <HeaderItems>Completed {getNumberOfCompletedTasks(items)}</HeaderItems>
+        <HeaderItems>
+          Uncompleted {getNumberOfUnCompletedTasks(items)}
+        </HeaderItems>
+        <RemoveButton onClick={() => dispatch(tasks.actions.removeAllTask())}>
+          <GoTrashcan />
+        </RemoveButton>
+      </HeaderContainer>
+    </>
   );
 };
 
